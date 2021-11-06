@@ -1,3 +1,3 @@
-class Piece:
-
-    
+public class Piece
+{
+}

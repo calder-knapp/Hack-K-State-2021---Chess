@@ -5,10 +5,11 @@ public class Board
 {
     // Instance Variables
     int size;
-    int[][] board;
+    Piece[][] board;
 
-    public Board(int s){
+    public Board(int s)
+    {
         size = s;
-        board = new int[size][size];
+        board = new Piece[size][size];
     }
 }

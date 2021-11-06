@@ -1,3 +1,6 @@
-class Terrain:
+public class Terrain
+{
+
+}
 
     

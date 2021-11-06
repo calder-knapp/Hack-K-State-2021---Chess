@@ -2,7 +2,12 @@ import java.util.*;
 import java.io.*;
 
 public class Piece{
-    
+
+	private int _x;
+	private int _y;
+	public Profession Profession;
+	public int color;
+
 	enum Profession {
 		BISHOP,
 		KNIGHT,
@@ -11,65 +16,69 @@ public class Piece{
 		KING
 	}
 	
-	public piece(Profession p,int color,int x0,int y0) {
-		private int _x0=x0;
-		private int _y0=y0;
-		public Profession _p = p;
-		public int _color = color;
-		
+	public Piece (Profession p, int c, int x0, int y0)
+	{
+		_x = x0;
+		_y = y0;
+		Profession = p;
+		color = c;		
 	}
-   
-	public void moveKnight(int xf,int yf) {
-		if(checkOutOfBounds(xf,yf)) {
-			return;
-		}
-		if((xf==x0+2 && yf==y0+1) || (xf==x0+1 && yf==y0+2) || (xf==x0-2 && yf==y0+1) || (xf==x0-1 && yf==y0+2)
-		|| (xf==x0-2 && yf==y0-1) || (xf==x0-1 && yf==y0-2) || (xf==x0+2 && yf==y0-1) || (xf==x0+1 && yf==y0-2)){
-			_x0=xf;
-			_y0=yf;
-		}
-	}
-   
-	public void moveBishop(xf,yf) {
-		if(checkOutOfBounds(xf,yf)) {
-			return;
-		}
-		if((x0-xf)==(y0-yf)) && ((x0-xf)==-(y0-yf)) {
-			_x0=xf;
-			_y0=yf;
-		}
-	}
-   
-	public void moveRook(xf,yf){
-		if(checkOutOfBounds(xf,yf)) {
-			return;
-		}
-		if (xf==x0) || (yf==y0) {
-			_x0=xf;
-			_y0=yf;
-		}
-	}
-   
-	public boolean checkOutOfBounds(xf,yf) {
-		if(xf > /*board.size*/) {
+
+	public boolean outOfBounds(int xf, int yf) {
+		if(xf > 8) //set this later
+		{
 			return false;
 		}
-		if yf > /*board.size*/ {
+		if(yf > 8) // set this later
+		{
 			return false;
 		}
 		return true;
 	}
+   
+	public void moveKnight(int xf,int yf) {
+		if(!outOfBounds(xf,yf))
+		{
+			if((xf==_x+2 && yf==_y+1) || (xf==_x+1 && yf==_y+2) || (xf==_x-2 && yf==_y+1) || (xf==_x-1 && yf==_y+2)
+			|| (xf==_x-2 && yf==_y-1) || (xf==_x-1 && yf==_y-2) || (xf==_x+2 && yf==_y-1) || (xf==_x+1 && yf==_y-2))
+			{
+				_x=xf;
+				_y=yf;
+			}
+		}
+	}
+   
+	public void moveBishop(int xf, int yf) {
+		if(outOfBounds(xf,yf))
+		{
+			return;
+		}
+		if ((_x-xf)==(_y-yf) && (_x-xf)==-(_y-yf))
+		{
+			_x=xf;
+			_y=yf;
+		}
+	}
+   
+	public void moveRook(int xf, int yf){
+		if(outOfBounds(xf,yf)) {
+			return;
+		}
+		if ((xf==_x) || (yf==_y)) {
+			_x=xf;
+			_y=yf;
+		}
+	}   
 	
 	public boolean checkCollisionBishop(int xf,int yf) {
-		int posNegx = x0-xf;
-		int posNegy = y0-yf;
+		int posNegx = _x-xf;
+		int posNegy = _y-yf;
 		int xtemp = xf;
 		int ytemp = yf;
-		Profession e = new Profession(0);
 		if(posNegx<0 && posNegy<0) {
 			while (/*getType(blah.board[xtemp-1][ytemp-1])*/ == e) {
-				xtemp=xtempt-1;
-				ytempt=ytemp-1;
+				xtemp = xtempt-1;
+				ytempt = ytemp-1;
 			}
 			yf=ytemp;
 			xf=xtemp;
@@ -85,7 +94,7 @@ public class Piece{
 		}
 	}
 
-	public Species getSpecies(Piece a) {
-		return a._s;
+	public Profession getSpecies(Piece a) {
+		return Profession;
 	}
 }

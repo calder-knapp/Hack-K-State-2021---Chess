@@ -32,11 +32,12 @@ class Piece:
       posNegx = x0-xf
       posNegy = y0-yf
       if posNegx<0 and posNegy<0:
-         while "board[x0-1][y0-1]" == 
+         while "getType(blah.board[xtemp-1][ytemp-1])" != 
       if posNegx<0 and posNegy>0:
          
       if posNegx>0 and posNegy<0:
          
       if posNegx>0 and posNegy>0:
          
-    def getType()
+    def getType(piece a):
+      return "piece.self.type"
